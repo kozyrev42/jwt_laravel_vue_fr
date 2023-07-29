@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import HomeComponent from './components/HomeComponent.vue';
-import AboutComponent from './components/AboutComponent.vue';
+import FruitsComponent from './components/FruitsComponent.vue';
 
 // роуты
 const routes = [
     { path: '/', component: HomeComponent },
-    { path: '/about', component: AboutComponent }
+    { path: '/fruits', component: FruitsComponent }
 ];
 
 // создание экземпляра маршрутизатора и передача опций `routes`
