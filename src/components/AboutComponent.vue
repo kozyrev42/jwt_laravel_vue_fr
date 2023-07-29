@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <div class="badge bg-primary text-wrap">AboutComponent</div> <br/>
+    <div class="badge bg-primary text-wrap">AboutComponent</div> <br/><br/>
     <router-link to="/" class="btn btn-outline-success mb-2">Home</router-link><br>
 
   </div>
