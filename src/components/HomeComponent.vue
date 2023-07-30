@@ -10,6 +10,24 @@ export default {
   name: 'HomeComponent',
   props: {
     msg: String
+  },
+
+  mounted() {
+    this.testApi();
+  },
+
+  methods: {
+    testApi() {
+      this.$axios
+        .get(`${process.env.VUE_APP_BASE_URL}/api/test`)
+        .then(response => {
+          console.log(response)
+        })
+
+        .catch(error => {
+          console.log(error)
+        })
+    }
   }
 }
 </script>

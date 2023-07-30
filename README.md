@@ -33,3 +33,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 npm install bootstrap
 npm install jquery
 npm install popper.js
+
+4. Подключил axios:
+npm install axios
