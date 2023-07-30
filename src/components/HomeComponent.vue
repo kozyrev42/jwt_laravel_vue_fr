@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="badge bg-primary text-wrap">HomeComponent</div> <br/><br/>
-    <router-link to="/fruits" class="btn btn-outline-primary mb-2">Фрукты</router-link>
+    <router-link to="/fruits" class="btn btn-outline-primary mb-2">Фрукты</router-link><br/><br/>
+
+    <router-link to="/user/login" class="btn btn-primary">Login</router-link><br/><br/>
+    <router-link to="/user/registration" class="btn btn-primary">Registration</router-link>
   </div>
 </template>
 
