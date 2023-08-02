@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import api from '@/api';
+
 export default {
   name: 'FruitsComponent',
   props: {
@@ -46,19 +48,17 @@ export default {
 
   // методы
   methods: {
-    // метод получения фруктов
     getFruits() {
-      this.$axios
-        .get(`${process.env.VUE_APP_BASE_URL}/api/fruits`)
+      api
+        .get('/api/fruits') // Здесь нет необходимости указывать полный URL, так как baseURL уже указан в api.js
         .then(response => {
-          console.log(response)
-          this.fruits = response.data.data
+          console.log(response);
+          this.fruits = response.data.data;
         })
-
         .catch(error => {
-          console.log(error)
-        })
-    }
+          console.log(error);
+        });
+    },
   }
 }
 </script>

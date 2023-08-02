@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import api from "@/api";
+
 export default {
   name: "UserRegistration",
 
@@ -29,8 +31,7 @@ export default {
 
   methods: {
     userRegistration() {
-      this.$axios
-        .post(`${process.env.VUE_APP_BASE_URL}/api/user/registration`,
+      api.post('/api/user/registration',
           {
             name: this.name,
             email: this.email,

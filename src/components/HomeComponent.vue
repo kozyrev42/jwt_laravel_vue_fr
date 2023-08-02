@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import api from "@/api";
+
 export default {
   name: 'HomeComponent',
   props: {
@@ -21,10 +23,11 @@ export default {
 
   methods: {
     testApi() {
-      this.$axios
-        .get(`${process.env.VUE_APP_BASE_URL}/api/test`)
+      api.get('/api/test')
         .then(response => {
           console.log(response)
+          // вывод в консоль, 'jwt3_access_token' из localStorage
+          console.log(localStorage.getItem('jwt3_access_token'));
         })
 
         .catch(error => {

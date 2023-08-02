@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import api from "@/api";
+
 export default {
   name: "UserLogin",
 
@@ -28,8 +30,7 @@ export default {
 
   methods: {
     login() {
-      this.$axios
-        .post(`${process.env.VUE_APP_BASE_URL}/api/auth/login`,
+      api.post('/api/auth/login',
           {
             email: this.email,
             password: this.password
