@@ -5,7 +5,7 @@ import FruitsComponent from './components/FruitsComponent.vue';
 
 // роуты
 const routes = [
-    { path: '/', component: HomeComponent },
+    { path: '/', component: HomeComponent, name: 'home' },
     { path: '/fruits', component: FruitsComponent },
     { path: '/user/login', component: () => import('@/components/User/UserLogin'), name: 'user.login' },
     { path: '/user/registration', component: () => import('@/components/User/UserRegistration'), name: 'user.registration' },
