@@ -40,6 +40,11 @@ export default {
           })
         .then(response => {
           console.log(response)
+          // помещаем токен в localStorage
+          localStorage.setItem('jwt3_access_token', response.data.access_token)
+          // переход на страницу Home
+          this.$router.push({name: 'home'})
+
         })
 
         .catch(error => {

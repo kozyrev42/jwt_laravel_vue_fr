@@ -65,8 +65,8 @@ export default {
           // удаляем токен из localStorage
           localStorage.removeItem('jwt3_access_token');
 
-          // обновляем компонент
-          this.$forceUpdate();
+          // переход на страницу user.login
+          this.$router.push({name: 'user.login'})
         })
 
         .catch(error => {
