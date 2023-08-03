@@ -6,6 +6,8 @@
 
     <router-link to="/" class="btn btn-outline-success mb-2">Home</router-link><br>
 
+    <router-link to="/user/registration" class="btn btn-primary">Registration</router-link><br/><br/>
+
     <div class="w-25">
       <input v-model="email" type="email" id="email" class="form-control mt-3 mb-3" placeholder="email">
       <input v-model="password" type="password" id="password" class="form-control mt-3 mb-3" placeholder="password">
