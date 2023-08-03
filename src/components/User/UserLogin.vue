@@ -8,9 +8,15 @@
 
     <router-link to="/user/registration" class="btn btn-primary">Registration</router-link><br/><br/>
 
-    <div class="w-25">
+    <div class="w-50">
       <input v-model="email" type="email" id="email" class="form-control mt-3 mb-3" placeholder="email">
       <input v-model="password" type="password" id="password" class="form-control mt-3 mb-3" placeholder="password">
+
+
+      <div v-if="error" class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
+
       <input @click.prevent="login" type="submit" class="btn btn-primary">
     </div>
 
@@ -26,7 +32,8 @@ export default {
   data() {
     return {
       email: null,
-      password: null
+      password: null,
+      error: null
     }
   },
 
@@ -47,6 +54,8 @@ export default {
 
         .catch(error => {
           console.log(error)
+          // в this.error помещаем сообщение об ошибке
+          this.error = error.response.data.error
         })
     }
   }
