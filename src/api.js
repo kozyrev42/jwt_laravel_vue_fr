@@ -26,7 +26,21 @@ api.interceptors.response.use(
         return response;
     },
     error => {
-        console.log('Interceptor response error:', error);
+        console.log(error.response.data.message);
+        // если ответ 'Token has expired', то делаем рефреш токена
+        if (error.response.data.message === 'Token has expired') {
+            return axios.post(`${process.env.VUE_APP_BASE_URL}/api/auth/refresh`, {}, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('jwt3_access_token')}`
+                }
+            }).then(response => {
+                localStorage.setItem('jwt3_access_token', response.data.access_token);
+
+                error.config.headers['Authorization'] = `Bearer ${response.data.access_token}`;
+
+                return axios.request(error.config);
+            })
+        }
 
         // Если статус ответа 401 (Unauthorized), перенаправляем на страницу логина
         if (error.response && error.response.status === 401) {
