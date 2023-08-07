@@ -18,7 +18,8 @@ export default {
 
   data() {
     return {
-      accessToken: null
+      accessToken: null,
+      refreshingToken: false // Флаг для отслеживания состояния обновления токена
     }
   },
   props: {
@@ -71,6 +72,32 @@ export default {
 
         .catch(error => {
           console.log(error)
+
+          // Проверяем, была ли ошибка "401 Unauthorized"
+          if (error.response && error.response.status === 401) {
+            if (!this.refreshingToken) { // Проверяем, не выполняется ли уже обновление
+              this.refreshingToken = true; // Устанавливаем флаг, что обновление началось
+
+              // Пытаемся обновить токен
+              api.post('/api/auth/refresh')
+                .then(refreshResponse => {
+                  // Получаем новый токен из ответа
+                  const newAccessToken = refreshResponse.data.access_token;
+
+                  // Обновляем токен в localStorage
+                  localStorage.setItem('jwt3_access_token', newAccessToken);
+
+                  // Повторно пытаемся выполнить запрос на выход
+                  this.logout();
+                })
+                .catch(refreshError => {
+                  console.log(refreshError);
+                })
+                .finally(() => {
+                  this.refreshingToken = false; // Снимаем флаг после завершения обновления
+                });
+            }
+          }
         })
     }
   }
